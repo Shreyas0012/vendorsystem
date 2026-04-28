@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Customer Dashboard</title>
+</head>
+<body>
+
+<h1>Customer Dashboard</h1>
+
+<h2>Welcome Customer</h2>
+
+<p th:text="'Hello, ' + ${name}"></p>
+
+<hr>
+
+<h3>Search Services</h3>
+
+<form action="/booking/create" method="post">
+
+    <label>Your Email:</label><br>
+    <input type="email" name="customerEmail" required>
+
+    <br><br>
+
+    <label>Select Service Type:</label><br>
+    <select name="serviceType" required>
+        <option value="">Choose Service</option>
+        <option value="Electrician">Electrician</option>
+        <option value="Plumber">Plumber</option>
+        <option value="Carpenter">Carpenter</option>
+        <option value="Painter">Painter</option>
+        <option value="AC Repair">AC Repair</option>
+        <option value="Cleaning Service">Cleaning Service</option>
+    </select>
+
+    <br><br>
+
+    <label>Select Vendor:</label><br>
+    <select name="vendorName" required>
+        <option value="">Choose Vendor</option>
+        <option value="Rahul Electrical Services">Rahul Electrical Services</option>
+        <option value="Sharma Plumbing Works">Sharma Plumbing Works</option>
+        <option value="Perfect AC Repair">Perfect AC Repair</option>
+    </select>
+
+    <br><br>
+
+    <label>Problem Description:</label><br>
+    <textarea name="description" rows="4" cols="40"></textarea>
+
+    <br><br>
+
+    <button type="submit">Create Service Request</button>
+
+</form>
+
+<hr>
+
+<h3>My Booking Status</h3>
+
+<p>Your booking updates will appear here</p>
+
+</body>
+</html>
