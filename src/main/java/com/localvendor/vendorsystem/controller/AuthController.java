@@ -17,25 +17,18 @@ public class AuthController {
     private UserRepository userRepository;
 
     @Autowired
-    private PasswordEncoder passwordEncoder;
-
-    /*
-    =====================================
-    REGISTER USER
-    CUSTOMER + VENDOR
-    =====================================
-    */
+    private PasswordEncoder 
 
     @PostMapping("/register")
     public ResponseEntity<String> registerUser(@RequestBody User user) {
 
-        // Check duplicate email
+        
         if (userRepository.findByEmail(user.getEmail()).isPresent()) {
             return ResponseEntity.badRequest()
                     .body("Email already exists!");
         }
 
-        // Encrypt password
+        
         user.setPassword(
                 passwordEncoder.encode(user.getPassword())
         );
@@ -43,20 +36,13 @@ public class AuthController {
         // Default active account
         user.setIsActive(true);
 
-        // Save user
+    
         userRepository.save(user);
 
         return ResponseEntity.ok(
                 "Registration Successful as " + user.getRole()
         );
-    }
-
-    /*
-    =====================================
-    LOGIN FOR:
-    ADMIN / VENDOR / CUSTOMER
-    =====================================
-    */
+    
 
     @PostMapping("/login")
     public ResponseEntity<String> loginUser(@RequestBody User loginRequest) {
